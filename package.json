@@ -45,7 +45,7 @@
     "rollup": "^0.55.0",
     "rollup-plugin-cleanup": "^2.0.0",
     "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-license": "^0.5.0",
+    "rollup-plugin-license": "^0.6.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rxjs": "^5.5.0",
     "sorcery": "^0.10.0",
@@ -117,14 +117,11 @@
     "publish:ci": "yarn prerelease && yarn postrelease",
     "integration:samples": "integration/samples.sh",
     "integration:samples:dev": "ts-node --project src/tsconfig.packagr.json ./integration/samples.dev.ts",
-    "integration:specs":
-      "cross-env TS_NODE_PROJECT=integration/tsconfig.specs.json mocha --require ts-node/register integration/samples/*/specs/**/*.ts",
+    "integration:specs": "cross-env TS_NODE_PROJECT=integration/tsconfig.specs.json mocha --require ts-node/register integration/samples/*/specs/**/*.ts",
     "integration:consumers": "integration/consumers.sh",
     "integration:consumers:ngc": "ngc -p integration/consumers/tsc/tsconfig.json",
-    "test:specs":
-      "cross-env TS_NODE_PROJECT=src/tsconfig.specs.json mocha --require ts-node/register \"src/**/*.spec.ts\"",
-    "test":
-      "yarn build && yarn test:specs && yarn integration:samples && yarn integration:specs && yarn integration:consumers",
+    "test:specs": "cross-env TS_NODE_PROJECT=src/tsconfig.specs.json mocha --require ts-node/register \"src/**/*.spec.ts\"",
+    "test": "yarn build && yarn test:specs && yarn integration:samples && yarn integration:specs && yarn integration:consumers",
     "commitmsg": "commitlint -e",
     "precommit": "pretty-quick --staged",
     "gh-pages": "gh-pages -d docs/ghpages"
