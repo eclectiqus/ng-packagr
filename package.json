@@ -35,8 +35,8 @@
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
     "injection-js": "^2.2.1",
-    "less": "^2.7.2",
-    "node-sass": "^4.5.3",
+    "less": "^2.7.3",
+    "node-sass": "^4.9.1",
     "node-sass-tilde-importer": "^1.0.0",
     "postcss": "^6.0.2",
     "postcss-discard-comments": "^2.0.4",
@@ -44,14 +44,15 @@
     "rimraf": "^2.6.1",
     "rollup": "^0.55.0",
     "rollup-plugin-cleanup": "^2.0.0",
-    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-license": "^0.5.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rxjs": "^5.5.0",
     "sorcery": "^0.10.0",
     "strip-bom": "^3.0.0",
     "stylus": "^0.54.5",
-    "uglify-js": "^3.0.7"
+    "uglify-js": "^3.0.7",
+    "snyk": "^1.114.0"
   },
   "peerDependencies": {
     "@angular/compiler": "^5.0.0",
@@ -117,16 +118,16 @@
     "publish:ci": "yarn prerelease && yarn postrelease",
     "integration:samples": "integration/samples.sh",
     "integration:samples:dev": "ts-node --project src/tsconfig.packagr.json ./integration/samples.dev.ts",
-    "integration:specs":
-      "cross-env TS_NODE_PROJECT=integration/tsconfig.specs.json mocha --require ts-node/register integration/samples/*/specs/**/*.ts",
+    "integration:specs": "cross-env TS_NODE_PROJECT=integration/tsconfig.specs.json mocha --require ts-node/register integration/samples/*/specs/**/*.ts",
     "integration:consumers": "integration/consumers.sh",
     "integration:consumers:ngc": "ngc -p integration/consumers/tsc/tsconfig.json",
-    "test:specs":
-      "cross-env TS_NODE_PROJECT=src/tsconfig.specs.json mocha --require ts-node/register \"src/**/*.spec.ts\"",
-    "test":
-      "yarn build && yarn test:specs && yarn integration:samples && yarn integration:specs && yarn integration:consumers",
+    "test:specs": "cross-env TS_NODE_PROJECT=src/tsconfig.specs.json mocha --require ts-node/register \"src/**/*.spec.ts\"",
+    "test": "yarn build && yarn test:specs && yarn integration:samples && yarn integration:specs && yarn integration:consumers",
     "commitmsg": "commitlint -e",
     "precommit": "pretty-quick --staged",
-    "gh-pages": "gh-pages -d docs/ghpages"
-  }
+    "gh-pages": "gh-pages -d docs/ghpages",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
