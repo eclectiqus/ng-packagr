@@ -28,8 +28,8 @@
   "typings": "./public_api.d.ts",
   "dependencies": {
     "@ngtools/json-schema": "^1.1.0",
-    "autoprefixer": "^7.1.1",
-    "browserslist": "^2.1.5",
+    "autoprefixer": "^9.0.0",
+    "browserslist": "^4.16.5",
     "commander": "^2.12.0",
     "cpx": "^1.5.0",
     "fs-extra": "^5.0.0",
